@@ -1,6 +1,22 @@
-# Tsuyoshi Haruda Website CMS
+# My Art
 
-log in at haradafashion.herokuapp.com/admin with harada:tsuyoshi
+**LinkedIn for Artists**
+a social network project
+
+<pre>
+             ,-. 
+    ,     ,-.   ,-. 
+   / \   (   )-(   ) 
+   \ |  ,.>-(   )-< 
+    \|,' (   )-(   ) 
+     Y ___`-'   `-' 
+     |/__/   `-' 
+     | 
+     | 
+     |    -hrr- 
+  ___|_____________ 
+</pre>
+
 
 A simple CMS website built with rails
 - bootstrap-sass with mobile responsive

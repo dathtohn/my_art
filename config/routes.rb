@@ -1,4 +1,6 @@
 MyArt::Application.routes.draw do
+  get "users/new"
+
   resources :sessions, only: [:create, :destroy]
 
   resources :collections do
@@ -9,7 +11,7 @@ MyArt::Application.routes.draw do
 
   root to: 'pages#home'
 
-  match '/admin',     to: 'sessions#create'
+  match '/signin',    to: 'sessions#create'
   match '/portfolio', to: 'collections#index'
   match '/about',     to: 'pages#about'
   match '/contact',   to: 'pages#contact'

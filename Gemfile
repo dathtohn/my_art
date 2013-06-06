@@ -11,6 +11,11 @@ group :development, :test do
 	gem 'rspec-rails',	'2.11.0'
 end
 
+group :test do
+  gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'database_cleaner', '0.7.0'
+end
+
 group :development do
   gem 'annotate', '2.5.0'
 end

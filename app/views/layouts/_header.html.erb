@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
         </a>
         
-        <%= link_to "ERIC LIU", admin_path, id: "logo" %>
+        <%= link_to "ERIC LIU", root_path, id: "logo" %>
         
         
         <div class="nav-collapse pull-right">
@@ -21,6 +21,8 @@
                         
             <% if signed_in? %>
               <li><%= link_to "Sign out", signout_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
             <% end %>
           </ul>
         </div>
