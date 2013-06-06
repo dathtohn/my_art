@@ -1,6 +1,6 @@
 # My Art
 
-*LinkedIn for Artists*
+*"LinkedIn for Artists"*
 
 ####a social network project built with rails####
 - bootstrap-sass with mobile responsive
