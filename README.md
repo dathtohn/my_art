@@ -1,7 +1,6 @@
 # My Art
 
 LinkedIn for Artists
---------------------
 
 <pre>
              ,-. 
