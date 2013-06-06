@@ -2,7 +2,6 @@
 
 LinkedIn for Artists
 
-<pre>
              ,-. 
     ,     ,-.   ,-. 
    / \   (   )-(   ) 
@@ -14,7 +13,6 @@ LinkedIn for Artists
      | 
      |    -hrr- 
   ___|_____________ 
-</pre>
 
 
 a social network project built with rails
