@@ -1,0 +1,16 @@
+<% provide(:title, "New Work") %>
+<h1>New Work</h1>
+
+<% @work.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+
+<%= form_tag(collection_works_path) do %>
+  <%= label_tag :title %><br>
+  <%= text_field_tag :title %><br>
+	
+	<%= label_tag :link %><br>
+  <%= text_field_tag :link %><br>
+
+  <%= submit_tag "Add new work" %>
+<% end %>

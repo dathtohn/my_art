@@ -1,0 +1,28 @@
+<% provide(:title, "New Collection") %>
+<h1>New Collection</h1>
+
+<%= form_for(@collection) do |f| %>
+  <% if @collection.errors.any? %>
+    <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@collection.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @collection.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :date %><br>
+  <%= f.date_select :date %><br>
+
+  <%= f.label :link %><br>
+  <%= f.text_field :link %><br>
+
+  <%= f.submit "Create collection" %>
+<% end %>

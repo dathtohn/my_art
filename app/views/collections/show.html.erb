@@ -1,0 +1,15 @@
+<% provide(:title, @collection.title) %>
+
+<h1><%= @collection.title %></h1>
+<%= @collection.date.to_s %>
+<h3>Works (<%= @collection.works.count %>)</h3>
+
+<% if signed_in? %>
+	<%= link_to "Add new work", new_collection_work_path(@collection) %>
+<% end %>
+
+<% if @collection.works.any? %>
+	<div id="masonry-container" class="transitions-enabled masonry clearfix">
+  	<%= render @works %>
+	</div>
+<% end %>

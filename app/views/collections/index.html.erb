@@ -1,0 +1,23 @@
+<%= provide(:title, 'Portfolio') %>
+<h1>Portfolio</h1>
+
+<% if signed_in? %>
+  <%= link_to "Create new collection", new_collection_path %>
+<% end %>
+
+<ul>
+  <% @collections.each do |collection| %>
+    <li>
+      <h4>
+        <%= link_to collection.title, collection %>
+        <%= collection.date.to_s %>
+        <% if signed_in? %>
+          | <%= link_to "edit", edit_collection_path(collection) %>
+          | <%= link_to "delete", collection, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+      </h4>
+      <%= link_to image_tag(collection.link, size: '150x150'), collection %>
+      <%= pluralize(collection.works.count, "work") %>
+  	</li>
+  <% end %>
+</ul>

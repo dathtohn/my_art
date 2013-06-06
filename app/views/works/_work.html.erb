@@ -1,0 +1,11 @@
+<div class="box col3">
+	<%= work.title %>
+
+	<% if signed_in? %>
+	  | <%= link_to "edit", edit_collection_work_path(@collection, work) %>
+	  | <%= link_to "delete", work, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
+	
+	<br>
+  <%= link_to image_tag(work.link), work.link, class: 'fancybox', rel: 'collection' %>
+</div>
