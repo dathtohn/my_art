@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'rspec-rails', '2.11.0'
+gem 'bcrypt-ruby', '3.0.1'
+
 gem 'rename'
 
 # Bundle edge Rails instead:
@@ -12,6 +15,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara', '1.1.2'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
 end
@@ -31,10 +35,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '1.2.3'
+  gem 'jquery-rails'
+  gem 'fancybox-rails'
 end
 
-gem 'jquery-rails'
-gem 'fancybox-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
