@@ -1,0 +1,12 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= @user.name %>
+				<% if current_user?(@user) %>
+				<% end %>
+			</h1>
+		</section>
+	</aside>
+</div>

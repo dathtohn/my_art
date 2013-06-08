@@ -1,0 +1,14 @@
+<li>
+	<%= gravatar_for user, size: 52 %>
+	<%= link_to user.name, user %>
+	<% if current_user.admin? %>
+		| <%= link_to user.email, user %>
+		| <%= link_to user.points, user %>
+		| <%= link_to "delete user", user, method: :delete, data: { confirm: "You sure?" } %>
+		<%= form_tag(updatepoints_user_path(user), method: :put) do %>
+			<%= label_tag :points, "Enter Point Total:" %>
+      <%= number_field_tag :points, user.points, min: 0 %>
+      <%= submit_tag "Update Points", class: "btn btn-large btn-primary" %>
+    <% end %>
+  <% end %>
+</li>
