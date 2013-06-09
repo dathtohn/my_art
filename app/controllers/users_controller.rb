@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: [:index, :edit, :update, :destroy]
 
   def show
-    @user = User.find(params[:id])
+    if signed_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to '/home'
+    end
   end
   
   def new

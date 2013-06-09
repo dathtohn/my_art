@@ -11,8 +11,9 @@ MyArt::Application.routes.draw do
 
   resources :works
 
-  root to: 'pages#home'
+  root to: 'users#show'
 
+  match '/home',       to: 'pages#home'
   match '/signup',    to: 'users#new'
   match '/signin',    to: 'sessions#new'
   match '/portfolio', to: 'collections#index'
