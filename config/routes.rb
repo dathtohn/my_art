@@ -1,5 +1,5 @@
 MyArt::Application.routes.draw do
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :users do
     resources :collections
@@ -13,7 +13,7 @@ MyArt::Application.routes.draw do
 
   root to: 'users#show'
 
-  match '/home',       to: 'pages#home'
+  match '/home',      to: 'pages#home'
   match '/signup',    to: 'users#new'
   match '/signin',    to: 'sessions#new'
   match '/portfolio', to: 'collections#index'
