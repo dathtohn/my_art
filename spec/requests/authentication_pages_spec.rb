@@ -28,11 +28,7 @@ describe "Authentication" do
 
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        fill_in "Email",    with: user.email.upcase
-        fill_in "Password", with: user.password
-        click_button "Sign in"
-      end
+      before { sign_in user }
 
       it { should have_selector('title',		text: user.name) }
       it { should have_link('Profile',			href: user_path(user)) }
@@ -51,16 +47,32 @@ describe "Authentication" do
   end
 
   describe "authorization" do
+		
+		describe "as signed-in user" do
+			let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+
+	  	describe "visiting the signup page" do
+	  		before { visit signup_path }
+	    	
+	    	it "should redirect to root path" do
+	    		page.should have_selector('title', text: user.name)
+	    	end
+	    end
+
+	    describe "submitting a POST request to the Users#new action" do
+        before { post users_path }
+        specify { response.should redirect_to(root_path) }
+      end
+	  end
 
     describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+    	let(:user) { FactoryGirl.create(:user) }
 
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          fill_in "Email",    with: user.email
-          fill_in "Password", with: user.password
-          click_button "Sign in"
+          sign_in user
         end
 
         describe "after signing in" do
@@ -68,10 +80,23 @@ describe "Authentication" do
           it "should render the desired protected page" do
             page.should have_selector('title', text: 'Edit user')
           end
+
+          describe "when signing in again" do
+            before do
+              delete signout_path
+              visit signin_path
+              sign_in user
+            end
+
+            it "should render the default (profile) page" do
+              page.should have_selector('title', text: user.name) 
+            end
+          end
         end
       end
 
       describe "in the Users controller" do
+      	let(:user) { FactoryGirl.create(:user) }
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
@@ -106,6 +131,16 @@ describe "Authentication" do
       end
     end
 
+    describe "as admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+	    before { sign_in admin }
+
+      describe "submitting a DELETE self request to the Users#destroy action" do
+        before { delete user_path(admin) }
+        specify { response.should redirect_to(users_path) }        
+      end
+    end
+
     describe "as non-admin user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:non_admin) { FactoryGirl.create(:user) }
@@ -115,36 +150,6 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_path) }        
-      end
-    end
-
-    describe "when attempting to visit a protected page" do
-      before do
-        visit edit_user_path(user)
-        fill_in "Email",    with: user.email
-        fill_in "Password", with: user.password
-        click_button "Sign in"
-      end
-
-      describe "after signing in" do
-
-        it "should render the desired protected page" do
-          page.should have_selector('title', text: 'Edit user')
-        end
-
-        describe "when signing in again" do
-          before do
-            delete signout_path
-            visit signin_path
-            fill_in "Email",    with: user.email
-            fill_in "Password", with: user.password
-            click_button "Sign in"
-          end
-
-          it "should render the default (profile) page" do
-            page.should have_selector('title', text: user.name) 
-          end
-        end
       end
     end
   end

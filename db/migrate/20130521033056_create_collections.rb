@@ -4,8 +4,10 @@ class CreateCollections < ActiveRecord::Migration
       t.string	:title
       t.date 		:date
       t.string	:link
+      t.integer :user_id
 
       t.timestamps
-    end
+    end	
+    add_index :collections, [:user_id, :created_at]
   end
 end

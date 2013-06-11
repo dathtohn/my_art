@@ -11,7 +11,7 @@
 #
 
 class Work < ActiveRecord::Base
-  attr_accessible :collection_id, :link, :title
+  attr_accessible :link, :title
   belongs_to :collection
 
 # validates_format_of :image, :with => %r{\.(png|jpg|jpeg)$}i, :message => "whatever"

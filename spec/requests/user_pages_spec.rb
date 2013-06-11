@@ -53,7 +53,7 @@ describe "User Pages" do
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before do
-      sign_in(user)
+      sign_in user
       visit user_path(user)
     end
 

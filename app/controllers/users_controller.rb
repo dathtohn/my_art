@@ -7,28 +7,33 @@ class UsersController < ApplicationController
     if signed_in?
       @user = current_user
     else
-      redirect_to '/home'
+      redirect_to home_path
     end
   end
   
   def new
-    if signed_in?
-      flash[:notice] = "Please sign out first."
-      redirect_to current_user
+    if !signed_in?
+      @user = User.new
     else
-    	@user = User.new
+      flash[:notice] = "Please sign out first."
+      redirect_to root_path
     end
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      # Handle a successful save.
-      sign_in @user
-      flash[:success] = "Welcome to My Art"
-      redirect_to @user
+    if !signed_in?
+      @user = User.new(params[:user])
+      if @user.save
+        # Handle a successful save.
+        sign_in @user
+        flash[:success] = "Welcome to My Art"
+        redirect_to @user
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      flash[:notice] = "Please sign out first."
+      redirect_to root_path
     end
   end
 
@@ -48,9 +53,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
-    redirect_to users_url
+    user = User.find(params[:id])
+    if current_user != user
+      user.destroy
+      flash[:success] = "User destroyed."
+      redirect_to users_url
+    else
+      flash[:error] = "Cannot delete yourself."
+      redirect_to users_url
+    end
   end
 
   private

@@ -12,9 +12,11 @@
 
 class Collection < ActiveRecord::Base
   attr_accessible :date, :title, :link
+  belongs_to :user
   has_many :works
 
   validates :date, presence: true
   validates :link, presence: true
   validates :title, presence: true
+  validates :user_id, presence: true
 end
