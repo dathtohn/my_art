@@ -12,7 +12,12 @@ class UsersController < ApplicationController
   end
   
   def new
-  	@user = User.new
+    if signed_in?
+      flash[:notice] = "Please sign out first."
+      redirect_to current_user
+    else
+    	@user = User.new
+    end
   end
 
   def create
