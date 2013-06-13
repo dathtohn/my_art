@@ -1,11 +1,12 @@
 class CollectionsController < ApplicationController
-  
+  before_filter :signed_in_user
+
   def new
-    @collection = Collection.new
+    @collection = current_user.collections.build
   end
 
   def create
-    @collection = Collection.new(params[:collection])
+    @collection = current_user.collections.build
     if @collection.save
       flash[:success] = "New collection created."
       redirect_to collections_url
@@ -45,4 +46,26 @@ class CollectionsController < ApplicationController
       flash[:error] = "Could not destroy."
     end
   end
+
+  private
+
+    def image_check?(url)
+      require 'uri'
+      require 'net/http'
+
+      Net::HTTP.start(url.host, url.port) do |http|
+        response = http.head(url.path)
+        case response
+        when Net::HTTPSuccess, Net::HTTPRedirection
+          case response.content_type
+          when "image/png", "image/gif", "image/jpeg"
+            return true
+          else
+            return false
+          end
+        else
+          return false
+        end
+      end
+    end
 end

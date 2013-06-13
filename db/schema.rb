@@ -11,15 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610225037) do
+ActiveRecord::Schema.define(:version => 20130613175930) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
     t.date     "date"
     t.string   "link"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "collections", ["user_id", "created_at"], :name => "index_collections_on_user_id_and_created_at"

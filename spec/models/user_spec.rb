@@ -146,4 +146,28 @@ describe User do
 	    its(:remember_token) { should_not be_blank }
 	  end
 	end
+
+  describe "collection associations" do
+
+    before { @user.save }
+    let!(:older_collection) do 
+      FactoryGirl.create(:collection, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_collection) do
+      FactoryGirl.create(:collection, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should destroy associated collections" do
+      collections = @user.collections.dup
+      @user.destroy
+      collections.should_not be_empty
+      collections.each do |collection|
+        Collection.find_by_id(collection.id).should be_nil
+      end
+    end
+
+    it "should have the right collections in the right order" do
+      @user.collections.should == [newer_collection, older_collection]
+    end
+  end
 end
