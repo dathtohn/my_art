@@ -1,9 +1,9 @@
 class CreateCollections < ActiveRecord::Migration
   def change
     create_table :collections do |t|
-      t.string	:title
+      t.string  :title
+      t.string  :description
       t.date 		:date
-      t.string	:link
       t.integer :user_id
 
       t.timestamps
