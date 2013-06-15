@@ -11,7 +11,7 @@
 #
 
 class Work < ActiveRecord::Base
-  attr_accessible :title, :photo, :
+  attr_accessible :title, :photo, :description
   has_attached_file :photo, styles: { thumb: "100x100#" },
 				  									url: "/assets/collections/:id/:style/:basename.:extension",
 				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
