@@ -11,10 +11,10 @@
 #
 
 class Work < ActiveRecord::Base
-  attr_accessible :title, :photo, :description
+  attr_accessible :title, :description, :photo
   has_attached_file :photo, styles: { thumb: "100x100#" },
-				  									url: "/assets/collections/:id/:style/:basename.:extension",
-				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
+				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",
+				  									path: ":rails_root/public/assets/collections/:id/works/:id/:style/:basename.:extension"
   belongs_to :collection
 
 # validates_format_of :image, :with => %r{\.(png|jpg|jpeg)$}i, :message => "whatever"
