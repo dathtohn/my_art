@@ -1,28 +1,29 @@
 <% provide(:title, "New Collection") %>
 <h1>New Collection</h1>
 
-<%= form_for(@collection) do |f| %>
-  <% if @collection.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-error">
-        The form contains <%= pluralize(@collection.errors.count, "error") %>.
-      </div>
+<% if @collection.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@collection.errors.count, "error") %>.
+    </div>
     <ul>
-    <% @collection.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @collection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
-  <% end %>
+<% end %>
+
+<%= form_for(@collection, :html => {:multipart => true}) do |f| %>
 
   <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
+  <%= f.text_field :title, placeholder: "New Collection" %><br>
 
   <%= f.label :date %><br>
   <%= f.date_select :date %><br>
 
-  <%= f.label :link %><br>
-  <%= f.text_field :link %><br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %><br>
 
   <%= f.file_field :cover %><br>
 

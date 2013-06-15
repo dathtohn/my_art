@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613175930) do
+ActiveRecord::Schema.define(:version => 20130614233726) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
+    t.string   "description"
     t.date     "date"
-    t.string   "link"
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -43,10 +43,14 @@ ActiveRecord::Schema.define(:version => 20130613175930) do
 
   create_table "works", :force => true do |t|
     t.string   "title"
+    t.string   "description"
     t.integer  "collection_id"
-    t.string   "link"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end

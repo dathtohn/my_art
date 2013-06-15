@@ -6,10 +6,10 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection = current_user.collections.build
+    @collection = current_user.collections.build(params[:collection])
     if @collection.save
       flash[:success] = "New collection created."
-      redirect_to collections_url
+      redirect_to current_user
     else
       render :new
     end
@@ -35,7 +35,7 @@ class CollectionsController < ApplicationController
   end
 
   def index
-    @collections = Collection.all
+    @collections = current_user.collections.all
   end
 
   def destroy

@@ -11,22 +11,24 @@
 #
 
 class Collection < ActiveRecord::Base
-  attr_accessible :date, :title, :link
-  has_attached_file :cover
+  attr_accessible :date, :title, :description, :cover
+  has_attached_file :cover, styles: { thumb: "100x100#" },
+				  									url: "/assets/collections/:id/:style/:basename.:extension",
+				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
   belongs_to :user
   has_many :works
 
   validates :date, presence: true
-  validates :link, presence: true
-  validates_format_of :link,
-  	with: %r{\.(gif|jpe?g|png)$}i,
-  	message: "must have an image extension"
   validates :title, presence: true
   validates :user_id, presence: true
 
-  default_scope order: 'collections.created_at DESC'
+  default_scope order: 'collections.date DESC'
 
  	private
+
+ 	 #  validates_format_of :link,
+  	# with: %r{\.(gif|jpe?g|png)$}i,
+  	# message: "must have an image extension"
 
 	  def link_is_valid_image
 	    url = URI.parse(self.link)
