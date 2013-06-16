@@ -17,6 +17,7 @@ class Collection < ActiveRecord::Base
 				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
   belongs_to :user
   has_many :works
+  has_many :comments, as: :commentable
 
   validates :date, presence: true
   validates :title, presence: true

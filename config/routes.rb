@@ -11,7 +11,7 @@ MyArt::Application.routes.draw do
 
   resources :works
 
-  root to: 'users#show'
+  root to: 'users#index'
 
   match '/home',      to: 'pages#home'
   match '/signup',    to: 'users#new'

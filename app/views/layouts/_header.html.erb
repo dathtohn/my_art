@@ -16,7 +16,7 @@
           <ul class="nav">
                         
             <% if signed_in? %>
-              <li><%= link_to current_user.name, root_path %></li>
+              <li><%= link_to current_user.name, current_user %></li>
               <li><%= link_to "+ collection", new_user_collection_path(current_user) %></li>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
