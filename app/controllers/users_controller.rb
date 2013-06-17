@@ -4,15 +4,12 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: :destroy
 
   def show
-    if signed_in?
-      @user = current_user
-      @collections = @user.collections
-    else
-      redirect_to home_path
-    end
+    @user = User.find(params[:id])
+    @collections = @user.collections
   end
   
   def new
+    # make sure user is not signed in
     if !signed_in?
       @user = User.new
     else
@@ -22,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    # make sure user is not signed in
     if !signed_in?
       @user = User.new(params[:user])
       if @user.save
