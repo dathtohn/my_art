@@ -14,7 +14,7 @@
   </div>
 <% end %>
 
-<%= form_for(@collection, :html => {:multipart => true}) do |f| %>
+<%= form_for(@collection, html: { multipart: true }) do |f| %>
 
   <%= f.label :title %><br>
   <%= f.text_field :title, placeholder: "New Collection" %><br>
