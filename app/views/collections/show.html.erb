@@ -17,7 +17,10 @@
 <div id="comments">
 <% for comment in @comments %>
   <div class="comment">
-    <%= comment.content %>
+    <%= link_to comment.user.name, comment.user %> wrote <%= comment.content %> on <%= comment.commentable.title %>
+    <% if comment.user == current_user %>
+    	| <%= link_to "delete", collection_comment_path(@collection, comment), method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
   </div>
 <% end %>
 </div>
