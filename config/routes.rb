@@ -6,10 +6,13 @@ MyArt::Application.routes.draw do
   end
   
   resources :collections do
+    resources :comments
     resources :works
   end
 
-  resources :works
+  resources :works do
+    resources :comments
+  end
 
   root to: 'users#index'
 

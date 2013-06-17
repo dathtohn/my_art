@@ -17,6 +17,9 @@ class CollectionsController < ApplicationController
 
   def show
     @collection = Collection.find(params[:id])
+    @commentable = @collection
+    @comments = @commentable.comments
+    @comment = Comment.new
     @works = @collection.works
   end
 
