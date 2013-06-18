@@ -1,0 +1,7 @@
+created a new work  
+
+<% if activity.trackable %>
+  titled <%= link_to activity.trackable.title, activity.trackable %> in the <%= link_to activity.trackable.collection.title, activity.trackable.collection %> collection.
+<% else %>
+  which has since been removed.
+<% end %>

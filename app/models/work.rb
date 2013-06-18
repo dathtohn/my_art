@@ -2,15 +2,21 @@
 #
 # Table name: works
 #
-#  id            :integer          not null, primary key
-#  title         :string(255)
-#  collection_id :integer
-#  link          :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  description        :string(255)
+#  collection_id      :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
 #
 
 class Work < ActiveRecord::Base
+	include PublicActivity::Common
+	
   attr_accessible :title, :description, :photo
   has_attached_file :photo, styles: { thumb: "100x100#" },
 				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",

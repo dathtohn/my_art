@@ -1,5 +1,6 @@
 MyArt::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
+  resources :activites, only: :index
 
   resources :users do
     resources :collections
@@ -14,7 +15,7 @@ MyArt::Application.routes.draw do
     resources :comments
   end
 
-  root to: 'users#index'
+  root to: 'activities#index'
 
   match '/home',      to: 'pages#home'
   match '/signup',    to: 'users#new'

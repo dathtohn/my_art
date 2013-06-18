@@ -1,0 +1,15 @@
+commented   
+
+<% if activity.trackable %>
+	"<%= activity.trackable.content %>" on <%= link_to activity.trackable.commentable.user.name, activity.trackable.commentable.user %>'s <%= link_to activity.trackable.commentable.title, activity.trackable.commentable %>
+	<% case activity.trackable.commentable_type %>
+	<% when "Collection" %>
+		collection.
+	<% when "Work" %>
+		work.
+	<% else %>
+		.
+	<% end %>
+<% else %>
+  something which has since been removed.
+<% end %>

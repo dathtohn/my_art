@@ -8,6 +8,7 @@ class CollectionsController < ApplicationController
   def create
     @collection = current_user.collections.build(params[:collection])
     if @collection.save
+      @collection.create_activity :create, owner: current_user
       flash[:success] = "New collection created."
       redirect_to current_user
     else

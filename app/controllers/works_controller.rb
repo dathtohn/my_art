@@ -9,6 +9,7 @@ class WorksController < ApplicationController
     @collection = Collection.find(params[:collection_id])
     @work = @collection.works.build(params[:work])
     if @work.save
+      @work.create_activity :create, owner: current_user
       flash[:success] = "Work added."
       redirect_to @collection
     else

@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(params[:comment])
     @comment.user = current_user
     if @comment.save
+      @comment.create_activity :create, owner: current_user
       redirect_to @commentable, notice: "Comment created."
     else
       render :new

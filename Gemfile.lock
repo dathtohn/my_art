@@ -105,6 +105,11 @@ GEM
       mime-types
     pg (0.12.2)
     polyglot (0.3.3)
+    public_activity (1.1.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      i18n (>= 0.5.0)
+      railties (~> 3.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -195,6 +200,7 @@ DEPENDENCIES
   masonry-rails (~> 0.2.0)
   paperclip (~> 3.0)
   pg (= 0.12.2)
+  public_activity
   rails (= 3.2.13)
   rename
   rspec-rails (= 2.11.0)

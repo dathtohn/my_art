@@ -2,15 +2,22 @@
 #
 # Table name: collections
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  date       :date
-#  link       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  description        :string(255)
+#  date               :date
+#  user_id            :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  cover_file_name    :string(255)
+#  cover_content_type :string(255)
+#  cover_file_size    :integer
+#  cover_updated_at   :datetime
 #
 
 class Collection < ActiveRecord::Base
+	include PublicActivity::Common
+	
   attr_accessible :date, :title, :description, :cover
   has_attached_file :cover, styles: { thumb: "100x100#" },
 				  									url: "/assets/collections/:id/:style/:basename.:extension",
