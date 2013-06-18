@@ -7,9 +7,7 @@ class WorksController < ApplicationController
 
   def create
     @collection = Collection.find(params[:collection_id])
-    @work = @collection.works.build
-    @work.title = params[:title]
-    @work.link = params[:link]
+    @work = @collection.works.build(params[:work])
     if @work.save
       flash[:success] = "Work added."
       redirect_to @collection

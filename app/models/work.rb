@@ -16,11 +16,9 @@ class Work < ActiveRecord::Base
 				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",
 				  									path: ":rails_root/public/assets/collections/:id/works/:id/:style/:basename.:extension"
   belongs_to :collection
-
-# validates_format_of :image, :with => %r{\.(png|jpg|jpeg)$}i, :message => "whatever"
+  has_many :comments, as: :commentable
 
   validates :collection_id, presence: true
-  VALID_LINK_REGEX = %r{\.(png|jpg|jpeg|gif)$}i
-  validates :link, presence: false, format: { with: VALID_LINK_REGEX }
+  # VALID_LINK_REGEX = %r{\.(png|jpg|jpeg|gif)$}i
   validates :title, presence: true
 end
