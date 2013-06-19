@@ -36,13 +36,12 @@ group :assets do
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
 	gem 'bootstrap-sass', '2.1'
-	gem "masonry-rails", "~> 0.2.0"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '1.2.3'
   gem 'jquery-rails'
-  gem 'fancybox-rails'
+  gem 'fancybox2-rails', '~> 0.2.4'
 end
 
 

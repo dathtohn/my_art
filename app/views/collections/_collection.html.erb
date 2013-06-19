@@ -1,0 +1,5 @@
+<div class="span3">
+  <%= link_to image_tag(collection.cover(:thumb), size: '200x200'), collection %><br>
+  <%= link_to collection.title, collection %> <%= collection.date.to_s %><br>
+	<%= pluralize(collection.works.count, "work") %>
+</div>

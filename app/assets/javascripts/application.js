@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require bootstrap
-//= require masonry/jquery.masonry
-//= require masonry/modernizr-transitions
 //= require fancybox
 //= require jquery_ujs
 //= require_tree .

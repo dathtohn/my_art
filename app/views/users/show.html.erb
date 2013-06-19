@@ -20,17 +20,13 @@
 	</aside>
 </div>
 
-<ul>
-  <% @collections.each do |collection| %>
-    <li>
-      <h4><%= link_to collection.title, collection %></h4>
-      <p><%= collection.date.to_s %></p>
-      <%= link_to image_tag(collection.cover(:thumb)), collection %>
-      <%= pluralize(collection.works.count, "work") %>
-  	</li>
-  <% end %>
-</ul>
+<% if @user.collections.any? %>
+  <div>
+    <%= render @collections %>
+  </div>
+<% end %>
 
+<div>
 <h2>Friends</h2>
 <ul>
   <% for friendship in @user.friendships %>
@@ -40,3 +36,4 @@
     </li>
   <% end %>
 </ul>
+</div>

@@ -18,7 +18,7 @@ class Work < ActiveRecord::Base
 	include PublicActivity::Common
 	
   attr_accessible :title, :description, :photo
-  has_attached_file :photo, styles: { thumb: "100x100#" },
+  has_attached_file :photo, styles: { thumb: "500x500#" },
 				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",
 				  									path: ":rails_root/public/assets/collections/:id/works/:id/:style/:basename.:extension"
   belongs_to :collection

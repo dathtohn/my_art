@@ -11,7 +11,6 @@
         
         <%= link_to "my art", root_path, id: "logo" %>
         
-        
         <div class="nav-collapse pull-right">
           <ul class="nav">
                         
@@ -19,6 +18,7 @@
               <li><%= link_to "Find Artists", users_path %></li>
               <li><%= link_to current_user.name, current_user %></li>
               <li><%= link_to "+ collection", new_user_collection_path(current_user) %></li>
+              <li><%= link_to "Home", root_path %></li>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   account <b class="caret"></b>
@@ -26,11 +26,11 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "settings", edit_user_path(current_user) %></li>
                   <li class="divider"></li>
+                  <li><%= link_to "about my art", about_path %></li>
+                  <li class="divider"></li>
                   <li>
                     <%= link_to "sign out", signout_path, method: "delete" %>
                   </li>
-                  <li class="divider"></li>
-                  <li><%= link_to "about my art", about_path %></li>
                 </ul>
             <% else %>
               <li><%= link_to "about", about_path %></li>
