@@ -1,7 +1,8 @@
 MyArt::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :activities, only: [:index]
-
+  resources :friendships
+  
   resources :users do
     resources :collections
   end

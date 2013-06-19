@@ -15,6 +15,10 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
   has_many :collections, dependent: :destroy
 
 	before_save { email.downcase! }

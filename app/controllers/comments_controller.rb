@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def destroy
   	if @commentable.comments.find(params[:id]).destroy
-      flash[:success] = "Collection destroyed."
+      flash[:success] = "Comment deleted."
       redirect_to @commentable
     else
       flash[:error] = "Could not destroy."

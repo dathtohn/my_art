@@ -22,7 +22,7 @@ class Work < ActiveRecord::Base
 				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",
 				  									path: ":rails_root/public/assets/collections/:id/works/:id/:style/:basename.:extension"
   belongs_to :collection
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :collection_id, presence: true
   # VALID_LINK_REGEX = %r{\.(png|jpg|jpeg|gif)$}i

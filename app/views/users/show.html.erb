@@ -4,10 +4,18 @@
 		<section>
 			<h1>
 				<%= @user.name %>
-				 <% if signed_in? %>
-          | <%= link_to "edit", user_collections_path(current_user) %>
+      </h1>
+      <p>
+        <% if @user == current_user %>
+          <%= link_to "edit", user_collections_path(current_user) %>
+        <% else %>
+          <% if friends?(@user) %>
+            <%= link_to "Unsupport Artist", friendship_path(@user), method: :delete %>
+          <% else %>
+            <%= link_to "Support Artist", friendships_path(friend_id: @user), method: :post %>
+          <% end %>
         <% end %>
-			</h1>
+			</p>
 		</section>
 	</aside>
 </div>
@@ -17,9 +25,18 @@
     <li>
       <h4><%= link_to collection.title, collection %></h4>
       <p><%= collection.date.to_s %></p>
-      <%= link_to image_tag(collection.cover, size: '150x150'), collection %>
       <%= link_to image_tag(collection.cover(:thumb)), collection %>
       <%= pluralize(collection.works.count, "work") %>
   	</li>
+  <% end %>
+</ul>
+
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%= link_to friendship.friend.name, friendship.friend %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </li>
   <% end %>
 </ul>

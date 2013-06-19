@@ -23,8 +23,8 @@ class Collection < ActiveRecord::Base
 				  									url: "/assets/collections/:id/:style/:basename.:extension",
 				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
   belongs_to :user
-  has_many :works
-  has_many :comments, as: :commentable
+  has_many :works, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :date, presence: true
   validates :title, presence: true
