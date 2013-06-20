@@ -9,6 +9,7 @@ body {
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$maroonDark: #6d0019;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -109,6 +110,10 @@ header {
       color: red;
       text-decoration: none;
     }
+  }
+
+  .caret {
+    color: white;
   }
 }
 
