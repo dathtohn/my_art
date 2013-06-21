@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include SessionsHelper
   include FriendshipsHelper
+  include CollectionsHelper
+  include WorksHelper
 
   # Force signout to prevent CSRF attacks
   def handle_unverified_request

@@ -1,4 +1,7 @@
 class WorksController < ApplicationController
+  before_filter :signed_in_user
+  before_filter :collection_work_owner, only: [:new, :create]
+  before_filter :work_owner, only: [:edit, :update, :destroy]
   
   def new
     @collection = Collection.find(params[:collection_id])
@@ -37,12 +40,6 @@ class WorksController < ApplicationController
       render :edit
     end
   end 
-
-  # @topic = Topic.find(params[:topic_id])
-  #   @post = @topic.posts.find(params[:id])
-  #   @post.update_attribute(:content, params[:content])
-  #   flash[:success] = "Post updated."
-  #   redirect_to edit_topic_post_url(@topic, @post)
 
   def destroy
     @work = Work.find(params[:id]) 
