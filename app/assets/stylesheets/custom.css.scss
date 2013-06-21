@@ -88,15 +88,21 @@ header {
       line-height: 21px;
       padding: 9px 10px 11px;
       text-decoration: none;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      text-shadow: none;
       color: white;
       &:hover {
         color: $maroonDark;
         background: $grayMediumLight !important;
-        -webkit-transition:background 1s ease;
-        -moz-transition:background 1s ease;
-        -o-transition:background 1s ease;
-        transition:background 1s ease;
+
+        // -webkit-transition:color 1s ease;
+        // -moz-transition:color 1s ease;
+        // -o-transition:color 1s ease;
+        // transition:color 1s ease;
+
+        // -webkit-transition:background 1s ease;
+        // -moz-transition:background 1s ease;
+        // -o-transition:background 1s ease;
+        // transition:background 1s ease;
       }
     }
   }
