@@ -143,23 +143,23 @@ header {
 
   .dropdown-menu a {
     background: $maroonDark !important;
-    padding:9px 10px;
+    // padding:9px 10px;
     color: white !important;
     text-shadow:none !important;
-    -webkit-transition:background 1s ease;
-    -moz-transition:background 1s ease;
-    -o-transition:background 1s ease;
-    transition:background 1s ease;
+    // -webkit-transition:background 1s ease;
+    // -moz-transition:background 1s ease;
+    // -o-transition:background 1s ease;
+    // transition:background 1s ease;
   }
 
   .dropdown-menu a:hover,.dropdown-menu a:focus{
     color: $maroonDark !important;
     filter:none !important;
     background: $grayMediumLight !important;
-    -webkit-transition:background 1s ease;
-    -moz-transition:background 1s ease;
-    -o-transition:background 1s ease;
-    transition:background 1s ease;
+    // -webkit-transition:background 1s ease;
+    // -moz-transition:background 1s ease;
+    // -o-transition:background 1s ease;
+    // transition:background 1s ease;
   }
 }
 

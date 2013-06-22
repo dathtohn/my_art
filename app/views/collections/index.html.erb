@@ -9,20 +9,16 @@
   </aside>
 </div>
 
-<ul>
+<div class="row">
   <% @collections.each do |collection| %>
-    <li>
-      <h4>
-        <%= link_to collection.title, collection %>
-        <%= collection.date.to_s %>
-        <% if signed_in? %>
-          | <%= link_to "edit", edit_collection_path(collection) %>
-          | <%= link_to "delete", collection, method: :delete, data: { confirm: "You sure?" } %>
-        <% end %>
-      </h4>
-      <%= link_to image_tag(collection.cover, size: '150x150'), collection %>
-      <%= link_to image_tag(collection.cover(:thumb)), collection %>
-      <%= pluralize(collection.works.count, "work") %>
-    </li>
+    <%= link_to collection.title, collection %>
+    <%= collection.date.to_s %>
+    <% if signed_in? %>
+      | <%= link_to "edit", edit_collection_path(collection) %>
+      | <%= link_to "delete", collection, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+    <%= link_to image_tag(collection.cover, size: '150x150'), collection %>
+    <%= link_to image_tag(collection.cover(:thumb)), collection %>
+    <%= pluralize(collection.works.count, "work") %>
   <% end %>
-</ul>
+</div>
