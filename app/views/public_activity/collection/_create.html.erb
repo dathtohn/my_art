@@ -1,7 +1,7 @@
 created a new collection  
 
 <% if activity.trackable %>
-  titled <%= link_to activity.trackable.title, activity.trackable %>.
+  titled <%= link_to image_tag(activity.trackable.cover(:thumb), size: "30x30"), activity.trackable.user %> <%= link_to activity.trackable.title, activity.trackable.user %>.
 <% else %>
   which has since been removed.
 <% end %>

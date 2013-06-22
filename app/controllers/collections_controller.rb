@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :collection_owner, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :collection_owner, only: [:edit, :update, :destroy]
 
   def new
     @collection = current_user.collections.build
