@@ -13,8 +13,12 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :picture
   has_secure_password
+  has_attached_file :picture, styles: { thumb: "500x500#" },
+                    default_url: "/assets/images/ma5.jpg",
+                    url: "/assets/users/:id/:style/:basename.:extension",
+                    path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
