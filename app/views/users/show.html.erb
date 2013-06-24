@@ -38,3 +38,12 @@
   <% end %>
 </ul>
 </div>
+
+<div>
+<h2>Supporters</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+  <li><%= link_to user.name, user %></li>
+  <% end %>
+</ul>
+</div>
