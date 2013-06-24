@@ -82,17 +82,35 @@ header {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   }
 
+  #logo {
+    float: left;
+    margin-left: 30px;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: $grayMediumLight;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+    padding-top: 7px;
+    font-weight: bold;
+    // line-height: 1;
+    &:hover {
+      //color: $maroonDark !important;
+      text-decoration: none;
+    }
+  }
+
   .navbar .nav {
     a {
+      font-size: 13px;
       float: none;
-      line-height: 21px;
-      padding: 9px 10px 11px;
+      line-height: 33px;
+      padding: 5px 5px 5px 5px;
       text-decoration: none;
       text-shadow: none;
       color: white;
       &:hover {
         color: $maroonDark;
-        background: $grayMediumLight !important;
+        background: white !important;
 
         // -webkit-transition:color 1s ease;
         // -moz-transition:color 1s ease;
@@ -107,29 +125,16 @@ header {
     }
   }
 
-  #logo {
-    float: left;
-    margin-right: 10px;
-    font-size: 1.7em;
-    color: $grayMediumLight;
-    text-transform: lowercase;
-    letter-spacing: -1px;
-    padding-top: 7px;
-    font-weight: bold;
-    line-height: 1;
-    &:hover {
-      //color: $maroonDark !important;
-      text-decoration: none;
-    }
-  }
-
   /* Drop-down menu */
-  // on 
   .navbar .nav li.dropdown.open > .dropdown-toggle,
   .navbar .nav li.dropdown.active > .dropdown-toggle,
   .navbar .nav li.dropdown.open.active > .dropdown-toggle {
     color: $maroonDark;
     background-color: white;
+  }
+
+  ul.nav li.dropdown:hover > ul.dropdown-menu{
+    display: block;    
   }
 
   .dropdown-menu {
@@ -142,17 +147,19 @@ header {
   }
 
   .dropdown-menu a {
+    height: 10px;
     background: $maroonDark !important;
-    // padding:9px 10px;
     color: white !important;
     text-shadow:none !important;
+    padding: 0px 0px 0px 0px !important;
+    margin: 0px !important;
+    font-size: 7px;
+    line-height: 19px;
     // -webkit-transition:background 1s ease;
     // -moz-transition:background 1s ease;
     // -o-transition:background 1s ease;
     // transition:background 1s ease;
-  }
-
-  .dropdown-menu a:hover,.dropdown-menu a:focus{
+    &:hover, &:focus {
     color: $maroonDark !important;
     filter:none !important;
     background: $grayMediumLight !important;
@@ -160,6 +167,7 @@ header {
     // -moz-transition:background 1s ease;
     // -o-transition:background 1s ease;
     // transition:background 1s ease;
+    }
   }
 }
 
@@ -259,8 +267,18 @@ input {
 /* activities index */
 
 .activity {
+  margin-left: auto;
+  margin-right: auto;
   padding: 30px;
   border: 1px solid $grayLighter;
+}
+
+.activitycentered {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* miscellaneous */

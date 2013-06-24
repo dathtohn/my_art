@@ -13,7 +13,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :picture
+  attr_accessible :name, :email, :password, :password_confirmation, :picture, :description
   has_secure_password
   has_attached_file :picture, styles: { thumb: "500x500#" },
                     default_url: "/assets/images/ma5.jpg",
@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates :description, length: { maximum: 300 }
 
   private
 

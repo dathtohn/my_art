@@ -1,7 +1,10 @@
-created a new collection  
+created a new collection.
 
 <% if activity.trackable %>
-  titled <%= link_to image_tag(activity.trackable.cover(:thumb), size: "30x30"), activity.trackable.user %> <%= link_to activity.trackable.title, activity.trackable.user %>.
+  <div class="activitycentered">
+	  <%= link_to image_tag(activity.trackable.cover(:thumb), size: "200x200"), activity.trackable.user %><br>
+	  <%= link_to activity.trackable.title, activity.trackable.user %>
+	</div>
 <% else %>
-  which has since been removed.
+  
 <% end %>

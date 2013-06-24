@@ -1,7 +1,11 @@
-created a new work  
+added a new work  
 
 <% if activity.trackable %>
-  titled <%= link_to image_tag(activity.trackable.photo(:thumb), size: "30x30"), activity.trackable.collection %> <%= link_to activity.trackable.title, activity.trackable.collection %> in the <%= link_to image_tag(activity.trackable.collection.cover(:thumb), size: "30x30"), activity.trackable.collection.user %> <%= link_to activity.trackable.collection.title, activity.trackable.collection %> collection.
+  in the <%= link_to image_tag(activity.trackable.collection.cover(:thumb), size: "30x30"), activity.trackable.collection.user %> <%= link_to activity.trackable.collection.title, activity.trackable.collection %> collection.<br>
+  <div class="activitycentered">
+	  <%= link_to image_tag(activity.trackable.photo(:thumb), size: "200x200"), activity.trackable.collection, class: "activityimage" %><br>
+	  <%= link_to activity.trackable.title, activity.trackable.collection %>
+	</div>
 <% else %>
   which has since been removed.
 <% end %>
