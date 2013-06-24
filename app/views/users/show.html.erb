@@ -1,25 +1,26 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-	<aside class="span4">
-		<section>
-			<h1>
-        <%= image_tag(@user.picture.url(:thumb), size: "50x50") %>
-				<%= @user.name %>
-      </h1>
-      <p>
-        <% if @user == current_user %>
-          <%= link_to "edit", user_collections_path(current_user) %>
-        <% else %>
-          <% if friends?(@user) %>
-            <%= link_to "Unsupport Artist", friendship_path(@user), method: :delete %>
-          <% else %>
-            <%= link_to "Support Artist", friendships_path(friend_id: @user), method: :post %>
-          <% end %>
-        <% end %>
-			</p>
-		</section>
-	</aside>
+  <div>
+    <h1>
+      <%= link_to image_tag(@user.picture.url(:thumb), size: "50x50"), "#", class: "editable" %>
+      <%= link_to "heyasdfasdfadsf", "#", class: "editlink", class: "hiddenpopup" %>
+    	<%= @user.name %>
+    </h1>
+  </div>
 </div>
+
+<p>
+  <% if @user == current_user %>
+    <%= link_to "edit", user_collections_path(current_user) %>
+  <% else %>
+    <% if friends?(@user) %>
+      <%= link_to "Unsupport Artist", friendship_path(@user), method: :delete %>
+    <% else %>
+      <%= link_to "Support Artist", friendships_path(friend_id: @user), method: :post %>
+    <% end %>
+  <% end %>
+</p>
 
 <% if @user.collections.any? %>
   <div class="row">
