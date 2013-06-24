@@ -20,9 +20,9 @@ class Collection < ActiveRecord::Base
 	
   attr_accessible :date, :title, :description, :cover
   has_attached_file :cover,
-  	styles: { thumb: "500x500#" },
-  	default_url: "/assets/images/myart.png",
-  	path: "/assets/collections/:id/:style/:basename.:extension"
+  	styles: { thumb: "500x500#" }
+  	# default_url: "/assets/images/myart.png",
+  	# path: "/assets/collections/:id/:style/:basename.:extension"
   belongs_to :user
   has_many :works, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy

@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20130623155645) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
