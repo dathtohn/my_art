@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_attached_file :picture, styles: { thumb: "500x500#" },
-                    default_url: "/assets/images/ma5.jpg",
+                    default_url: "/assets/images/myart.png",
                     url: "/assets/users/:id/:style/:basename.:extension",
                     path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
   has_many :friendships, dependent: :destroy

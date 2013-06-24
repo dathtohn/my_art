@@ -19,9 +19,9 @@ class Collection < ActiveRecord::Base
 	include PublicActivity::Common
 	
   attr_accessible :date, :title, :description, :cover
-  has_attached_file :cover, styles: { thumb: "500x500#" },
-				  									url: "/assets/collections/:id/:style/:basename.:extension",
-				  									path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
+  has_attached_file :cover, styles: { thumb: "500x500#" }
+				  									# url: "/assets/collections/:id/:style/:basename.:extension",
+				  									# path: ":rails_root/public/assets/collections/:id/:style/:basename.:extension"
   belongs_to :user
   has_many :works, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
