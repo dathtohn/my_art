@@ -39,9 +39,9 @@ MyArt::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :bucket => ENV['my-art'],
+      :access_key_id => ENV['AKIAITXEQASXCLCVOPJQ'],
+      :secret_access_key => ENV['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']
     }
   }
 end
