@@ -19,8 +19,10 @@ class Work < ActiveRecord::Base
 	
   attr_accessible :title, :description, :photo
   has_attached_file :photo, styles: { thumb: "500x500#" },
-				  									url: "/assets/collections/:id/works/:id/:style/:basename.:extension",
-				  									path: ":rails_root/public/assets/collections/:id/works/:id/:style/:basename.:extension"
+				  						storage: :s3,
+                      s3_credentials: S3_CREDENTIALS,
+                      default_url: "/images/myart.png",
+                      path: "/:attachment/:id/:style.:extension"
   belongs_to :collection
   has_many :comments, as: :commentable, dependent: :destroy
 
