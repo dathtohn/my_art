@@ -20,10 +20,10 @@ class Collection < ActiveRecord::Base
 	
   attr_accessible :date, :title, :description, :cover
   has_attached_file :cover,
-  	styles: { thumb: "500x500#" }
+  	styles: { thumb: "500x500#" },
   	storage: :s3,
     s3_credentials: S3_CREDENTIALS,
-    default_url: "/images/myart.png",
+    default_url: "https://s3.amazonaws.com/my-art/images/myart.jpg",
     path: "/:attachment/:id/:style.:extension"
   belongs_to :user
   has_many :works, dependent: :destroy

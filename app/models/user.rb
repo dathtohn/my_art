@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: { thumb: "500x500#" },
                       storage: :s3,
                       s3_credentials: S3_CREDENTIALS,
-                      default_url: "/images/myart.png",
+                      default_url: "https://s3.amazonaws.com/my-art/images/myart.jpg",
                       path: "/:attachment/:id/:style.:extension"
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
