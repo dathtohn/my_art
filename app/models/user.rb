@@ -13,7 +13,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :picture
+  attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_attached_file :picture, styles: { thumb: "500x500#" },
                       storage: :s3,

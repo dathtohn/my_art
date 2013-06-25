@@ -3,8 +3,10 @@
 <div class="row">
   <div>
     <h1>
-      <%= link_to image_tag(@user.picture.url(:thumb), size: "50x50"), "#", class: "editable" %>
-      <%= link_to "heyasdfasdfadsf", "#", class: "editlink", class: "hiddenpopup" %>
+      <div id="profilepicture">
+        <%= link_to image_tag(@user.picture.url(:thumb), size: "75x75"), @user.picture.url, id: "profilepic" %>
+        <%= link_to "edit", "#", id: "profilepicedit" %>
+      </div>
     	<%= @user.name %>
     </h1>
   </div>
