@@ -36,12 +36,12 @@ MyArt::Application.configure do
   config.assets.debug = true
 
   # Amazon S3 settings for Paperclip uploads
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['my-art'],
-      :access_key_id => ENV['AKIAITXEQASXCLCVOPJQ'],
-      :secret_access_key => ENV['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']
-    }
-  }
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => ENV['my-art'],
+  #     :access_key_id => ENV['AKIAITXEQASXCLCVOPJQ'],
+  #     :secret_access_key => ENV['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']
+  #   }
+  # }
 end

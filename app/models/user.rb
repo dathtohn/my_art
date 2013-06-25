@@ -16,9 +16,12 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :picture
   has_secure_password
   has_attached_file :picture, styles: { thumb: "500x500#" },
-                    :default_url => '/images/:attachment/missing.png'
-                    # url: "/assets/users/:id/:style/:basename.:extension",
-                    # path: "/assets/users/:id/:style/:basename.:extension"
+                      storage: :s3,
+                      :default_url => "/images/:attachment/missing.png",
+                      :s3_credentials => "#{Rails.root}/config/s3.yml",
+                      :path => "users/:attachment/:id/:style.:extension"
+                      # url: "/assets/users/:id/:style/:basename.:extension",
+                      # path: "/assets/users/:id/:style/:basename.:extension"
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
