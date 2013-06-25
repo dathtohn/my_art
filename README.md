@@ -4,5 +4,7 @@
 
 ####a social network project built with rails####
 - bootstrap-sass with mobile responsive
-- jquery masonry to display works within collections
 - fancybox image gallery display
+- paperclip image uploads
+- storage on aws s3
+- rspec testing
