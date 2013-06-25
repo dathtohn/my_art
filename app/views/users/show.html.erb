@@ -3,18 +3,18 @@
 <div class="row">
   <div>
     <h1>
-      <div id="profilepicture">
-        <%= link_to image_tag(@user.picture.url(:thumb), size: "75x75"), @user.picture.url, id: "profilepic" %>
-        <%= link_to "edit", "#", id: "profilepicedit" %>
-      </div>
+      <%= link_to image_tag(@user.picture.url(:thumb), size: "75x75"), @user.picture.url, id: "profilepic" %>
     	<%= @user.name %>
     </h1>
   </div>
 </div>
 
+<div>
+  <%= @user.description %>
+</div>
+
 <p>
   <% if @user == current_user %>
-    <%= link_to "edit", user_collections_path(current_user) %>
   <% else %>
     <% if friends?(@user) %>
       <%= link_to "Unsupport Artist", friendship_path(@user), method: :delete %>

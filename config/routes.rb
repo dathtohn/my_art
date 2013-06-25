@@ -4,6 +4,9 @@ MyArt::Application.routes.draw do
   resources :friendships
   
   resources :users do
+    put 'updatepicture',      on: :member
+    put 'updatedescription',  on: :member
+    get 'profile',            on: :member
     resources :collections
   end
   

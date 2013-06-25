@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
+  before_filter :signed_in_user
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
@@ -46,6 +46,28 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def profile
+    @user = User.find(params[:id])
+  end
+
+  # def updatepicture
+  #   if @user.update_attribute(:picture, params[:picture])
+  #     flash[:success] = "Updated profile picture."
+  #   else
+  #     render 'profile'
+  #   end
+  #   redirect_to profile_user_path(@user)
+  # end
+
+  # def updatedescription
+  #   if current_user.update_attribute(:description, params[:description])
+  #     flash[:success] = "Updated profile description."
+  #   else
+  #     render 'profile'
+  #   end
+  #   redirect_to profile_user_path(current_user)
+  # end
 
   def index
     @users = User.paginate(page: params[:page])
